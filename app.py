@@ -4,7 +4,7 @@ import pymysql
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Leyno'
 
-conn = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1410022280',                               password='Shar1110', database='1410022280_verk7')
+conn = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='',                               password='BbB121', database='_verk7')
 # https://pythonspot.com/login-authentication-with-flask/
 
 @app.route('/')
@@ -24,7 +24,7 @@ def login():
         p = request.form['password']
     
     cur = conn.cursor()
-    cur.execute("SELECT count(user) FROM users where user = %s and pass=%s",(n,p))
+    cur.execute("SELECT count(user) FROM users where user = %s and pass = %s",(n,p))
     p = cur.fetchone()
     if p[0] == 1:
         session['logged_in'] = n
@@ -52,14 +52,14 @@ def add():
             conn.commit()
             cur.close()
             return render_template("nyr.html")
-
+            
         else:
             return render_template("tekid.html")
 
 @app.route('/utskra')
 def utskra():
-    listi = []
-    session['logged_in'] = listi
+    taema = []
+    session['logged_in'] = taema
 
     return render_template("utskra.html")
 
