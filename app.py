@@ -2,10 +2,13 @@ from flask import Flask, render_template, session, request
 import pymysql
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'Leyno'
+app.config['SECRET_KEY'] = 'Boinard'
 
-conn = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='',                               password='BbB121', database='_verk7')
-# https://pythonspot.com/login-authentication-with-flask/
+conn = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='032023370', password='mypassword', database='032023370_verk7')
+
+
+
+#---------------------routes---------------------
 
 @app.route('/')
 def index():
@@ -75,5 +78,11 @@ def vefur():
     return render_template("vefur.html", p=p, n=nafn)
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+#-------------------run---------------------
+
+@app.errorhandler(404)
+def error404(error):
+	return render_template("404.html"),404
+
+if __name__ == "__main__":
+	app.run(debug=True)
