@@ -4,7 +4,7 @@ import pymysql
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Boinard'
 
-conn = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='0312023370', password='Borgarnes1', database='032023370_verk7')
+conn = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='0312023370', password='mypassword', database='0312023370_verk7')
 
 
 
