@@ -2,7 +2,7 @@ from flask import Flask, render_template, session, request
 import pymysql
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'Boinard'
+app.config['SECRET_KEY'] = 'Leyno'
 
 conn = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='0312023370', password='mypassword', database='0312023370_verk7')
 
@@ -40,7 +40,7 @@ def login():
 def nyskra():
     return render_template("nyr_adgangur.tpl")
 
-@app.route('/add', methods=['GET','POST'])
+@app.route('/baetavid', methods=['GET','POST'])
 def add():
     if request.method == 'POST':
         n = request.form['notandanafn']
@@ -54,19 +54,19 @@ def add():
             cur.execute("INSERT INTO users(user,pass,nafn) VALUES(%s,%s,%s)",(n,pw,nafn))
             conn.commit()
             cur.close()
-            return render_template("adgangurinn_kominn.tpl")
+            return render_template("adgangur_kominn.tpl")
             
         else:
             return render_template("notandanafn_tekid.tpl")
 
-@app.route('/utskradur')
+@app.route('/buid_ad_utskra')
 def utskra():
     taema = []
     session['logged_in'] = taema
 
     return render_template("buid_ad_utskra.tpl")
 
-@app.route('/vefurinn')
+@app.route('/adgangar')
 def vefur():
     cur = conn.cursor()
     cur.execute("SELECT * FROM users")

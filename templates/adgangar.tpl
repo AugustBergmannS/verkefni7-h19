@@ -8,5 +8,5 @@
         <p>{{ i[2] }}</p>
     {% endfor %}
     <br><br>
-    <a href="/utskra">Útskrá</a>
+    <a href="/buid_ad_utskra">Útskrá</a>
 {% endblock %}

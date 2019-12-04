@@ -3,7 +3,7 @@
 
 {% block innihald %}
     <h3>Nýskráning:</h3>
-    <form method="POST" action="/add">
+    <form method="POST" action="/baetavid">
         <p>Notandanafn:</p>
         <input type="text" name="notandanafn" required>
         <br>
